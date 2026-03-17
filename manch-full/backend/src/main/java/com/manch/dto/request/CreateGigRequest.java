@@ -2,11 +2,14 @@ package com.manch.dto.request;
 import com.manch.entity.Gig;
 import com.manch.entity.User;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
-@Data public class CreateGigRequest {
+@Builder
+@Data
+public class CreateGigRequest {
     @NotBlank @Size(max=200) private String title;
     private String description;
     @NotBlank private String city;
