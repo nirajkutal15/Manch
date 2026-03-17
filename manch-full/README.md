@@ -20,15 +20,15 @@ Full-stack platform connecting performing artists with open mics, cafes, college
 ![Login](screenshots/login.png)
 
 ## Tech Stack
-| Layer | Technology |
-|-------|-----------|
-| Frontend | React 18, TypeScript, Vite, Tailwind CSS, Redux Toolkit, TanStack React Query |
-| Backend | Java 17, Spring Boot 3, Spring Security, Spring Data JPA |
-| Database | MySQL 8.2 (prod) · H2 in-memory (local, zero setup) |
-| Auth | JWT + Refresh Tokens, Role-based Access Control |
-| Migrations | Flyway |
-| Container | Docker + Docker Compose |
-| Testing | JUnit 5, Mockito |
+| Layer      | Technology                                                                    |
+|------------|-------------------------------------------------------------------------------|
+| Frontend   | React 18, TypeScript, Vite, Tailwind CSS, Redux Toolkit, TanStack React Query |
+| Backend    | Java 17, Spring Boot 3, Spring Security, Spring Data JPA                      |
+| Database   | MySQL 8.2 (prod) · H2 in-memory (local, zero setup)                           |
+| Auth       | JWT + Refresh Tokens, Role-based Access Control                               |
+| Migrations | Flyway                                                                        |
+| Container  | Docker + Docker Compose                                                       |
+| Testing    | JUnit 5, Mockito                                                              |
 
 ## Features
 - **Artist flow** — register → build profile → browse gigs → apply → track applications
