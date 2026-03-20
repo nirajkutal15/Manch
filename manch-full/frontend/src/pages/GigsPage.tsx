@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { gigService } from '@/services'
 import { useAuth } from '@/hooks/useAuth'
-import { GIG_TYPE_LABELS, type GigResponse, type GigType, type PayType } from '@/types'
+import { GIG_TYPE_LABELS, type GigResponse } from '@/types'
 import Modal from '@/components/ui/Modal'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 

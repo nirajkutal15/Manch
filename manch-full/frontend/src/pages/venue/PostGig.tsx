@@ -1,11 +1,11 @@
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { gigService } from '@/services'
-import { GIG_TYPE_LABELS, ART_FORM_LABELS, CITIES } from '@/types'
+import { GIG_TYPE_LABELS, CITIES } from '@/types'
 
 const schema = z.object({
   title: z.string().min(3, 'Title required').max(200),
@@ -18,14 +18,16 @@ const schema = z.object({
   gigType: z.string().min(1, 'Gig type required'),
   payType: z.string().min(1, 'Pay type required'),
   payAmount: z.string().optional(),
-  slotsAvailable: z.string().min(1),
+  slotsAvailable: z.string().min(1, 'Slots required'),
   requirements: z.string().optional(),
   durationMinutes: z.string().optional(),
 })
 
+type PostGigForm = z.infer<typeof schema>
+
 export default function PostGig() {
   const navigate = useNavigate()
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({ resolver: zodResolver(schema), defaultValues: { slotsAvailable: '1', payType: 'FREE' } })
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<PostGigForm>({ resolver: zodResolver(schema), defaultValues: { slotsAvailable: '1', payType: 'FREE' } })
   const payType = watch('payType')
 
   const mutation = useMutation({
@@ -62,7 +64,7 @@ export default function PostGig() {
               <div>
                 <label className="form-label">Gig Title *</label>
                 <input {...register('title')} placeholder="Thursday Open Mic at Cafe Bohemian" className="form-input" />
-                {errors.title && <p className="text-rust text-xs mt-1">{errors.title.message}</p>}
+                {errors.title && <p className="text-rust text-xs mt-1">{errors.title.message as string}</p>}
               </div>
               <div>
                 <label className="form-label">Description</label>
@@ -75,7 +77,7 @@ export default function PostGig() {
                     <option value="">Select type</option>
                     {Object.entries(GIG_TYPE_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
                   </select>
-                  {errors.gigType && <p className="text-rust text-xs mt-1">{errors.gigType.message}</p>}
+                  {errors.gigType && <p className="text-rust text-xs mt-1">{errors.gigType.message as string}</p>}
                 </div>
                 <div>
                   <label className="form-label">City *</label>
@@ -83,7 +85,7 @@ export default function PostGig() {
                     <option value="">Select city</option>
                     {CITIES.map(c => <option key={c}>{c}</option>)}
                   </select>
-                  {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message}</p>}
+                  {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message as string}</p>}
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -106,7 +108,7 @@ export default function PostGig() {
               <div>
                 <label className="form-label">Event Date *</label>
                 <input {...register('eventDate')} type="date" min={new Date().toISOString().split('T')[0]} className="form-input" />
-                {errors.eventDate && <p className="text-rust text-xs mt-1">{errors.eventDate.message}</p>}
+                {errors.eventDate && <p className="text-rust text-xs mt-1">{errors.eventDate.message as string}</p>}
               </div>
               <div>
                 <label className="form-label">Start Time</label>

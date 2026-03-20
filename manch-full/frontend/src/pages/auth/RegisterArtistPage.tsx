@@ -55,13 +55,13 @@ export default function RegisterArtistPage() {
             <div>
               <label className="form-label">Full Name *</label>
               <input {...register('fullName')} placeholder="Your full name" className="form-input" />
-              {errors.fullName && <p className="text-rust text-xs mt-1">{errors.fullName.message}</p>}
+              {errors.fullName && <p className="text-rust text-xs mt-1">{errors.fullName.message as string}</p>}
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="form-label">Email *</label>
                 <input {...register('email')} type="email" placeholder="you@example.com" className="form-input" />
-                {errors.email && <p className="text-rust text-xs mt-1">{errors.email.message}</p>}
+                {errors.email && <p className="text-rust text-xs mt-1">{errors.email.message as string}</p>}
               </div>
               <div>
                 <label className="form-label">City *</label>
@@ -69,13 +69,13 @@ export default function RegisterArtistPage() {
                   <option value="">Select city</option>
                   {CITIES.map(c => <option key={c}>{c}</option>)}
                 </select>
-                {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message}</p>}
+                {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message as string}</p>}
               </div>
             </div>
             <div>
               <label className="form-label">Password *</label>
               <input {...register('password')} type="password" placeholder="Min. 8 characters" className="form-input" />
-              {errors.password && <p className="text-rust text-xs mt-1">{errors.password.message}</p>}
+              {errors.password && <p className="text-rust text-xs mt-1">{errors.password.message as string}</p>}
             </div>
             <div>
               <label className="form-label">Art Form *</label>
@@ -83,7 +83,7 @@ export default function RegisterArtistPage() {
                 <option value="">What do you perform?</option>
                 {Object.entries(ART_FORM_LABELS).map(([v, l]) => <option key={v} value={v}>{l}</option>)}
               </select>
-              {errors.artForm && <p className="text-rust text-xs mt-1">{errors.artForm.message}</p>}
+              {errors.artForm && <p className="text-rust text-xs mt-1">{errors.artForm.message as string}</p>}
             </div>
             <div>
               <label className="form-label">Bio <span className="normal-case font-normal text-muted">(optional)</span></label>

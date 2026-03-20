@@ -65,13 +65,13 @@ export default function RegisterVenuePage() {
             <div>
               <label className="form-label">Venue / Organisation Name *</label>
               <input {...register('venueName')} placeholder="Cafe Bohemian / IIT Bombay" className="form-input" />
-              {errors.venueName && <p className="text-rust text-xs mt-1">{errors.venueName.message}</p>}
+              {errors.venueName && <p className="text-rust text-xs mt-1">{errors.venueName.message as string}</p>}
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div>
                 <label className="form-label">Contact Name *</label>
                 <input {...register('fullName')} placeholder="Your full name" className="form-input" />
-                {errors.fullName && <p className="text-rust text-xs mt-1">{errors.fullName.message}</p>}
+                {errors.fullName && <p className="text-rust text-xs mt-1">{errors.fullName.message as string}</p>}
               </div>
               <div>
                 <label className="form-label">City *</label>
@@ -79,18 +79,18 @@ export default function RegisterVenuePage() {
                   <option value="">Select city</option>
                   {CITIES.map(c => <option key={c}>{c}</option>)}
                 </select>
-                {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message}</p>}
+                {errors.city && <p className="text-rust text-xs mt-1">{errors.city.message as string}</p>}
               </div>
             </div>
             <div>
               <label className="form-label">Email *</label>
               <input {...register('email')} type="email" placeholder="contact@venue.com" className="form-input" />
-              {errors.email && <p className="text-rust text-xs mt-1">{errors.email.message}</p>}
+              {errors.email && <p className="text-rust text-xs mt-1">{errors.email.message as string}</p>}
             </div>
             <div>
               <label className="form-label">Password *</label>
               <input {...register('password')} type="password" placeholder="Min. 8 characters" className="form-input" />
-              {errors.password && <p className="text-rust text-xs mt-1">{errors.password.message}</p>}
+              {errors.password && <p className="text-rust text-xs mt-1">{errors.password.message as string}</p>}
             </div>
             <div>
               <label className="form-label">Venue Type *</label>
@@ -98,7 +98,7 @@ export default function RegisterVenuePage() {
                 <option value="">What kind of events?</option>
                 {VENUE_TYPES.map(([v, l]) => <option key={v} value={v}>{l}</option>)}
               </select>
-              {errors.venueType && <p className="text-rust text-xs mt-1">{errors.venueType.message}</p>}
+              {errors.venueType && <p className="text-rust text-xs mt-1">{errors.venueType.message as string}</p>}
             </div>
             <button type="submit" disabled={mutation.isPending} className="btn-primary w-full justify-center">
               {mutation.isPending ? 'Creating account...' : 'Create Venue Account →'}

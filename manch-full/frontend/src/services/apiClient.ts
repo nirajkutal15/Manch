@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import toast from 'react-hot-toast'
 
-const BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8080/api'
+const BASE = (import.meta as any).env?.VITE_API_BASE_URL ?? 'http://localhost:8080/api'
 
 export const apiClient = axios.create({
   baseURL: BASE,

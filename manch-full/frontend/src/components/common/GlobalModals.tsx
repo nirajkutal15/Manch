@@ -9,7 +9,7 @@ import type { RootState, AppDispatch } from '@/store'
 import { closeModal } from '@/store/slices/uiSlice'
 import { waitlistService, contactService } from '@/services'
 import Modal from '@/components/ui/Modal'
-import { CITIES, ART_FORM_LABELS, type ArtForm } from '@/types'
+import { CITIES, ART_FORM_LABELS } from '@/types'
 
 export default function GlobalModals() {
   const dispatch = useDispatch<AppDispatch>()
