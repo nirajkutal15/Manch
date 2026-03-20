@@ -36,7 +36,7 @@ export default function PostGig() {
     onError: (e: any) => toast.error(e?.response?.data?.message ?? 'Failed to post gig'),
   })
 
-  const onSubmit = (raw: Record<string, unknown>) => {
+  const onSubmit = (raw: PostGigForm) => {
     const data: Record<string, unknown> = {
       ...raw,
       slotsAvailable: Number(raw.slotsAvailable),
@@ -56,7 +56,7 @@ export default function PostGig() {
       </div>
 
       <div className="card p-8">
-        <form onSubmit={handleSubmit(d => onSubmit(d as Record<string, unknown>))} className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           {/* Basic Info */}
           <div>
             <h3 className="font-display font-bold text-lg mb-4">Basic Information</h3>
